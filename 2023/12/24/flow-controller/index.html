@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Ruby - 流程控制與邏輯判斷 | 學習筆記</title><meta name="author" content="Ju5tin Deng"><meta name="copyright" content="Ju5tin Deng"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="流程控制 (Flow Controller) 如果這樣..不然就這樣..根據條件運算的結果改變程式執行的順序。滿足條件時，會執行某一程式區塊，而條件不滿足時，則執行另一個程式區塊。選擇結構大多可以分為三種：單一選擇、雙向選擇、多向選擇。  如果..不然就.. if..else.. 二分法  1234567age &#x3D; 20if age &gt;&#x3D; 18  puts &quot;已成年&quot;el">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ruby - 流程控制與邏輯判斷">
+<meta property="og:url" content="https://ju5tindeng.github.io/2023/12/24/flow-controller/index.html">
+<meta property="og:site_name" content="學習筆記">
+<meta property="og:description" content="流程控制 (Flow Controller) 如果這樣..不然就這樣..根據條件運算的結果改變程式執行的順序。滿足條件時，會執行某一程式區塊，而條件不滿足時，則執行另一個程式區塊。選擇結構大多可以分為三種：單一選擇、雙向選擇、多向選擇。  如果..不然就.. if..else.. 二分法  1234567age &#x3D; 20if age &gt;&#x3D; 18  puts &quot;已成年&quot;el">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ju5tindeng.github.io/image/Ju5tin.jpg">
+<meta property="article:published_time" content="2023-12-23T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-12-29T18:14:16.631Z">
+<meta property="article:author" content="Ju5tin Deng">
+<meta property="article:tag" content="Ruby">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ju5tindeng.github.io/image/Ju5tin.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ju5tindeng.github.io/2023/12/24/flow-controller/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '載入更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Ruby - 流程控制與邏輯判斷',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: undefined,
+  isToc: true,
+  postUpdate: '2023-12-30 02:14:16'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/image/Ju5tin.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="學習筆記"><span class="site-name">學習筆記</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Ruby - 流程控制與邏輯判斷</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">發表於</span><time datetime="2023-12-23T16:00:00.000Z" title="發表於 2023-12-24 00:00:00">2023-12-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Ruby/">Ruby</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="流程控制-Flow-Controller"><a href="#流程控制-Flow-Controller" class="headerlink" title="流程控制 (Flow Controller)"></a>流程控制 (Flow Controller)</h2><blockquote>
+<p><strong>如果這樣..不然就這樣..</strong><br>根據條件運算的結果改變程式執行的順序。<br>滿足條件時，會執行某一程式區塊，而條件不滿足時，則執行另一個程式區塊。<br>選擇結構大多可以分為三種：<strong>單一選擇</strong>、<strong>雙向選擇</strong>、<strong>多向選擇</strong>。</p>
+</blockquote>
+<h3 id="如果-不然就-if-else"><a href="#如果-不然就-if-else" class="headerlink" title="如果..不然就.. if..else.."></a>如果..不然就.. <code>if..else..</code></h3><ul>
+<li>二分法</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">age = <span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> age &gt;= <span class="number">18</span></span><br><span class="line">  puts <span class="string">&quot;已成年&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  puts <span class="string">&quot;未成年&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="簡化的三元運算子"><a href="#簡化的三元運算子" class="headerlink" title="簡化的三元運算子"></a>簡化的三元運算子</h3><ul>
+<li>將 <code>if..else..</code> 精簡</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">age = <span class="number">20</span></span><br><span class="line">status = (age &gt;= <span class="number">18</span>) ? <span class="string">&quot;已成年&quot;</span> : <span class="string">&quot;未成年&quot;</span></span><br><span class="line">puts status</span><br></pre></td></tr></table></figure>
+
+<h3 id="很多個如果-if-elsif-else"><a href="#很多個如果-if-elsif-else" class="headerlink" title="很多個如果.. if..elsif..else .."></a>很多個如果.. <code>if..elsif..else ..</code></h3><ul>
+<li>使用 <code>elsif</code> 來增加分支</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">age = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> age &gt; <span class="number">0</span> &amp;&amp; age &lt;= <span class="number">3</span></span><br><span class="line">  puts <span class="string">&quot;Baby&quot;</span></span><br><span class="line"><span class="keyword">elsif</span> age &gt; <span class="number">3</span> &amp;&amp; age &lt;= <span class="number">10</span></span><br><span class="line">  puts <span class="string">&quot;Kid&quot;</span></span><br><span class="line"><span class="keyword">elsif</span> age &gt; <span class="number">10</span> &amp;&amp; age &lt;= <span class="number">17</span></span><br><span class="line">  puts <span class="string">&quot;Teenager&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  puts <span class="string">&quot;Adult&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：是 <code>elsif</code> 少一個 <code>e</code>。</p>
+<h3 id="很多個如果-case-when"><a href="#很多個如果-case-when" class="headerlink" title="很多個如果.. case..when.."></a>很多個如果.. <code>case..when..</code></h3><ul>
+<li><code>when</code> 相當於 <strong>比較</strong></li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">weather = <span class="string">&quot;下雨&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> weather</span><br><span class="line"><span class="keyword">when</span> <span class="string">&quot;下雨&quot;</span></span><br><span class="line">  puts <span class="string">&quot;待在家&quot;</span></span><br><span class="line"><span class="keyword">when</span> <span class="string">&quot;出太陽&quot;</span></span><br><span class="line">  puts <span class="string">&quot;出去玩&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  puts <span class="string">&quot;在家睡覺&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="if-倒裝句"><a href="#if-倒裝句" class="headerlink" title="if 倒裝句"></a><code>if</code> 倒裝句</h3><ul>
+<li>Ruby 可以把 if 放到句子最後面的倒裝句寫法。</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> age &gt;= <span class="number">18</span></span><br><span class="line">  puts <span class="string">&quot;已成年&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>改成</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">puts <span class="string">&quot;已成年&quot;</span> <span class="keyword">if</span> age &gt;= <span class="number">18</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="邪惡分身"><a href="#邪惡分身" class="headerlink" title="邪惡分身"></a>邪惡分身</h4><p><code>if not</code> 等於 <code>unless</code></p>
+<h2 id="邏輯判斷"><a href="#邏輯判斷" class="headerlink" title="邏輯判斷"></a>邏輯判斷</h2><blockquote>
+<p>程式中用來判斷條件是否成立的過程。</p>
+</blockquote>
+<h3 id="等於"><a href="#等於" class="headerlink" title="等於 ="></a>等於 <code>=</code></h3><ul>
+<li>一個等於 <code>=</code> 是 <strong>指定給值</strong> 的意思</li>
+<li>兩個等於 <code>==</code> 是 <strong>比較</strong> 的意思</li>
+<li>三個等於 <code>===</code> 是 <strong>比較或是其他</strong> 的意思</li>
+<li>驚嘆號加等於 <code>!=</code> 是 <strong>不等於</strong> 的意思</li>
+</ul>
+<h3 id="或者"><a href="#或者" class="headerlink" title="或者 ||"></a>或者 <code>||</code></h3><ul>
+<li>用於組合兩個條件，判斷只要一個條件符合即為成立。</li>
+</ul>
+<h3 id="而且"><a href="#而且" class="headerlink" title="而且 &amp;&amp;"></a>而且 <code>&amp;&amp;</code></h3><ul>
+<li>用於組合兩個條件，判斷兩個條件都必須符合才有成立。</li>
+</ul>
+<h2 id="nil-和-false"><a href="#nil-和-false" class="headerlink" title="nil 和 false"></a><code>nil</code> 和 <code>false</code></h2><ul>
+<li>在 Ruby 裡因為所有的東西都是物件，只有 <code>nil</code> 跟 <code>false</code> 會被當假的 <strong>false</strong>。</li>
+<li>事實上 <code>nil</code> 跟 <code>false</code> 也都是 <strong>物件</strong>。</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">puts <span class="literal">nil</span>.<span class="keyword">class</span></span><br><span class="line"><span class="comment"># NilClass</span></span><br><span class="line"></span><br><span class="line">puts <span class="literal">false</span>.<span class="keyword">class</span></span><br><span class="line"><span class="comment">#FalseClass</span></span><br></pre></td></tr></table></figure>
+
+<p><code>nil</code> 是 <strong>NilClass</strong> 類別的實體，而 <code>false</code> 則是 <strong>FalseClass</strong> 類別的實體。</p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://railsbook.tw/chapters/05-ruby-basic-1">為你自己學 Ruby on Rails - 變數、常數、流程控制、迴圈</a></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://Ju5tinDeng.github.io">Ju5tin Deng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章連結: </span><span class="post-copyright-info"><a href="https://ju5tindeng.github.io/2023/12/24/flow-controller/">https://ju5tindeng.github.io/2023/12/24/flow-controller/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="https://Ju5tinDeng.github.io" target="_blank">學習筆記</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Ruby/">Ruby</a></div><div class="post_share"><div class="social-share" data-image="/image/Ju5tin.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/12/25/loop-iteration/" title="Ruby - 迴圈及迭代"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Ruby - 迴圈及迭代</div></div></a></div><div class="next-post pull-right"><a href="/2023/12/23/string/" title="Ruby - 字串"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Ruby - 字串</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相關推薦</span></div><div class="relatedPosts-list"><div><a href="/2023/12/26/array/" title="Ruby - 陣列"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-26</div><div class="title">Ruby - 陣列</div></div></a></div><div><a href="/2023/12/28/hash/" title="Ruby - 雜湊"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-28</div><div class="title">Ruby - 雜湊</div></div></a></div><div><a href="/2023/12/22/number/" title="Ruby - 數字"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-22</div><div class="title">Ruby - 數字</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/image/Ju5tin.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Ju5tin Deng</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Ju5tinDeng" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6-Flow-Controller"><span class="toc-number">1.</span> <span class="toc-text">流程控制 (Flow Controller)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C-%E4%B8%8D%E7%84%B6%E5%B0%B1-if-else"><span class="toc-number">1.1.</span> <span class="toc-text">如果..不然就.. if..else..</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B0%A1%E5%8C%96%E7%9A%84%E4%B8%89%E5%85%83%E9%81%8B%E7%AE%97%E5%AD%90"><span class="toc-number">1.2.</span> <span class="toc-text">簡化的三元運算子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%88%E5%A4%9A%E5%80%8B%E5%A6%82%E6%9E%9C-if-elsif-else"><span class="toc-number">1.3.</span> <span class="toc-text">很多個如果.. if..elsif..else ..</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%88%E5%A4%9A%E5%80%8B%E5%A6%82%E6%9E%9C-case-when"><span class="toc-number">1.4.</span> <span class="toc-text">很多個如果.. case..when..</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#if-%E5%80%92%E8%A3%9D%E5%8F%A5"><span class="toc-number">1.5.</span> <span class="toc-text">if 倒裝句</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%82%AA%E6%83%A1%E5%88%86%E8%BA%AB"><span class="toc-number">1.5.1.</span> <span class="toc-text">邪惡分身</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%82%8F%E8%BC%AF%E5%88%A4%E6%96%B7"><span class="toc-number">2.</span> <span class="toc-text">邏輯判斷</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%89%E6%96%BC"><span class="toc-number">2.1.</span> <span class="toc-text">等於 &#x3D;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%96%E8%80%85"><span class="toc-number">2.2.</span> <span class="toc-text">或者 ||</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%80%8C%E4%B8%94"><span class="toc-number">2.3.</span> <span class="toc-text">而且 &amp;&amp;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nil-%E5%92%8C-false"><span class="toc-number">3.</span> <span class="toc-text">nil 和 false</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%83%E8%80%83"><span class="toc-number">4.</span> <span class="toc-text">參考</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/29/symbol/" title="Ruby - 符號">Ruby - 符號</a><time datetime="2023-12-28T16:00:00.000Z" title="發表於 2023-12-29 00:00:00">2023-12-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/28/hash/" title="Ruby - 雜湊">Ruby - 雜湊</a><time datetime="2023-12-27T16:00:00.000Z" title="發表於 2023-12-28 00:00:00">2023-12-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/27/range/" title="Ruby - 範圍">Ruby - 範圍</a><time datetime="2023-12-26T16:00:00.000Z" title="發表於 2023-12-27 00:00:00">2023-12-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/26/array/" title="Ruby - 陣列">Ruby - 陣列</a><time datetime="2023-12-25T16:00:00.000Z" title="發表於 2023-12-26 00:00:00">2023-12-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/25/loop-iteration/" title="Ruby - 迴圈及迭代">Ruby - 迴圈及迭代</a><time datetime="2023-12-24T16:00:00.000Z" title="發表於 2023-12-25 00:00:00">2023-12-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By Ju5tin Deng</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="返回頂部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div></div></body></html>

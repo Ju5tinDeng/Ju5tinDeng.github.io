@@ -1,0 +1,233 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Ruby - 字串 | 學習筆記</title><meta name="author" content="Ju5tin Deng"><meta name="copyright" content="Ju5tin Deng"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="字串 String 把字母串在一起，外面用成對的 雙引號或單引號 包起來。  建立字串123name &#x3D; String.new(&quot;Ruby&quot;)name &#x3D; &quot;Ruby&quot;name &#x3D; &#x27;Ruby&#x27;  12345name &#x3D; %Q(Ruby)# 效果等同於雙引號name &#x3D; %q(Ruby)# 效果等同於單引號  注意：單引號 和 %q 不會">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ruby - 字串">
+<meta property="og:url" content="https://ju5tindeng.github.io/2023/12/23/string/index.html">
+<meta property="og:site_name" content="學習筆記">
+<meta property="og:description" content="字串 String 把字母串在一起，外面用成對的 雙引號或單引號 包起來。  建立字串123name &#x3D; String.new(&quot;Ruby&quot;)name &#x3D; &quot;Ruby&quot;name &#x3D; &#x27;Ruby&#x27;  12345name &#x3D; %Q(Ruby)# 效果等同於雙引號name &#x3D; %q(Ruby)# 效果等同於單引號  注意：單引號 和 %q 不會">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ju5tindeng.github.io/image/Ju5tin.jpg">
+<meta property="article:published_time" content="2023-12-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-12-29T18:11:51.730Z">
+<meta property="article:author" content="Ju5tin Deng">
+<meta property="article:tag" content="Ruby">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ju5tindeng.github.io/image/Ju5tin.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ju5tindeng.github.io/2023/12/23/string/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '載入更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Ruby - 字串',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: undefined,
+  isToc: true,
+  postUpdate: '2023-12-30 02:11:51'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/image/Ju5tin.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="學習筆記"><span class="site-name">學習筆記</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Ruby - 字串</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">發表於</span><time datetime="2023-12-22T16:00:00.000Z" title="發表於 2023-12-23 00:00:00">2023-12-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Ruby/">Ruby</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="字串-String"><a href="#字串-String" class="headerlink" title="字串 String"></a>字串 String</h2><blockquote>
+<p>把字母串在一起，外面用成對的 <strong>雙引號或單引號</strong> 包起來。</p>
+</blockquote>
+<h3 id="建立字串"><a href="#建立字串" class="headerlink" title="建立字串"></a>建立字串</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="title class_">String</span>.new(<span class="string">&quot;Ruby&quot;</span>)</span><br><span class="line">name = <span class="string">&quot;Ruby&quot;</span></span><br><span class="line">name = <span class="string">&#x27;Ruby&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">%Q(Ruby)</span></span><br><span class="line"><span class="comment"># 效果等同於雙引號</span></span><br><span class="line"></span><br><span class="line">name = <span class="string">%q(Ruby)</span></span><br><span class="line"><span class="comment"># 效果等同於單引號</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：<code>單引號</code> 和 <code>%q</code> 不會處理 <strong>字串安插</strong>。</p>
+<h3 id="字串安插"><a href="#字串安插" class="headerlink" title="字串安插"></a>字串安插</h3><ul>
+<li>字串可以使用加號來進行與變數的組合、串接。</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">&quot;justin&quot;</span></span><br><span class="line">age = <span class="number">30</span></span><br><span class="line"></span><br><span class="line">puts <span class="string">&quot;我是 &quot;</span> + name</span><br><span class="line"><span class="comment"># 我是 justin</span></span><br><span class="line"></span><br><span class="line">puts <span class="string">&quot;我是 &quot;</span> + name + <span class="string">&quot; 今年 &quot;</span> + age + <span class="string">&quot; 歲&quot;</span></span><br><span class="line"><span class="comment"># 字串跟數字無法直接串接，會出現 TypeError 的錯誤訊息。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 需要先把 age 轉型別、換成字串 (使用 to_s 方法)。</span></span><br><span class="line">puts <span class="string">&quot;我是 &quot;</span> + name + <span class="string">&quot; 今年 &quot;</span> + age.to_s + <span class="string">&quot; 歲&quot;</span></span><br><span class="line"><span class="comment"># 我是 justin 今年 30 歲</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>透過 <code>#&#123;     &#125;</code> Interpolation 填入變數組合、串接。</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">&quot;justin&quot;</span></span><br><span class="line">age = <span class="number">30</span></span><br><span class="line"></span><br><span class="line">puts <span class="string">&quot;我是 <span class="subst">#&#123;name&#125;</span>，今年 <span class="subst">#&#123;age&#125;</span> 歲&quot;</span></span><br><span class="line"><span class="comment"># 我是 justin，今年 30 歲</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 注意：單引號組成的字串，不會處理字串安插。</span></span><br><span class="line">puts <span class="string">&#x27;我是 <span class="subst">#&#123;name&#125;</span>，今年 <span class="subst">#&#123;age&#125;</span> 歲&#x27;</span></span><br><span class="line"><span class="comment"># 我是 #&#123;name&#125;，今年 #&#123;age&#125; 歲</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="跳脫字元-escape"><a href="#跳脫字元-escape" class="headerlink" title="跳脫字元 (escape) \"></a>跳脫字元 (escape) <code>\</code></h3><p>如果想要在雙引號裡放雙引號，或是單引號裡放單引號，必須使用跳脫字元。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">puts <span class="string">&#x27;Hi, I\&#x27;m justin&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>告知 Ruby：這是一個普通的引號，不是用來包字串的那個引號。</p>
+<h3 id="字串操作"><a href="#字串操作" class="headerlink" title="字串操作"></a>字串操作</h3><ul>
+<li>字串是許多字元的組合，可以把它當做陣列操作。</li>
+</ul>
+<h4 id="取得字串某個字元"><a href="#取得字串某個字元" class="headerlink" title="取得字串某個字元"></a>取得字串某個字元</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">&quot;justin&quot;</span></span><br><span class="line"></span><br><span class="line">puts name[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># j</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="修改字串某個字元"><a href="#修改字串某個字元" class="headerlink" title="修改字串某個字元"></a>修改字串某個字元</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">&quot;justin&quot;</span></span><br><span class="line"></span><br><span class="line">name[<span class="number">2</span>] = <span class="string">&quot;5&quot;</span></span><br><span class="line">puts name</span><br><span class="line"><span class="comment"># ju5tin</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="計算字串長度或字元組"><a href="#計算字串長度或字元組" class="headerlink" title="計算字串長度或字元組"></a>計算字串長度或字元組</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">puts <span class="string">&quot;hello, world&quot;</span>.size</span><br><span class="line"><span class="comment"># 12</span></span><br><span class="line"></span><br><span class="line">puts <span class="string">&quot;菜鳥工程師&quot;</span>.size</span><br><span class="line"><span class="comment"># 5</span></span><br><span class="line"></span><br><span class="line">puts <span class="string">&quot;菜鳥工程師&quot;</span>.bytesize</span><br><span class="line"><span class="comment"># 15</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="計算一段文字中共有幾個字"><a href="#計算一段文字中共有幾個字" class="headerlink" title="計算一段文字中共有幾個字"></a>計算一段文字中共有幾個字</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">words = <span class="string">&quot;Convention Over Configuration and Don&#x27;t Repeat Yourself&quot;</span></span><br><span class="line">puts words.split.count</span><br><span class="line"><span class="comment"># 7</span></span><br></pre></td></tr></table></figure>
+
+<p>透過 <code>split</code> 方法把字串依照輸入的參數拆成陣列 (若未輸入將以空白字元做為拆解字元)，<br>再使用 <code>count</code> 方法計算陣列的數量。</p>
+<h3 id="英文字串的大小寫轉換"><a href="#英文字串的大小寫轉換" class="headerlink" title="英文字串的大小寫轉換"></a>英文字串的大小寫轉換</h3><h4 id="首字大寫-capitalize"><a href="#首字大寫-capitalize" class="headerlink" title="首字大寫 capitalize"></a>首字大寫 <code>capitalize</code></h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">puts <span class="string">&quot;justin&quot;</span>.capitalize</span><br><span class="line"><span class="comment"># Justin</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="全部轉換成大寫-upcase"><a href="#全部轉換成大寫-upcase" class="headerlink" title="全部轉換成大寫 upcase"></a>全部轉換成大寫 <code>upcase</code></h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">puts <span class="string">&quot;justin deng&quot;</span>.upcase</span><br><span class="line"><span class="comment"># JUSTIN DENG</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="全部轉換成小寫-downcase"><a href="#全部轉換成小寫-downcase" class="headerlink" title="全部轉換成小寫 downcase"></a>全部轉換成小寫 <code>downcase</code></h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">puts <span class="string">&quot;JUSTIN DENG&quot;</span>.downcase</span><br><span class="line"><span class="comment"># justin deng</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="大小寫互相轉換-swapcase"><a href="#大小寫互相轉換-swapcase" class="headerlink" title="大小寫互相轉換 swapcase"></a>大小寫互相轉換 <code>swapcase</code></h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">puts <span class="string">&quot;jUSTIN dENG&quot;</span>.swapcase</span><br><span class="line"><span class="comment"># Justin Deng</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="檢查是否為空字串-empty"><a href="#檢查是否為空字串-empty" class="headerlink" title="檢查是否為空字串 empty?"></a>檢查是否為空字串 <code>empty?</code></h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">puts <span class="string">&quot;&quot;</span>.empty?</span><br><span class="line"><span class="comment"># true</span></span><br><span class="line"></span><br><span class="line">puts <span class="string">&quot; &quot;</span>.empty?</span><br><span class="line"><span class="comment"># false</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：空白字元（space）不算是空字串，所以得到 <code>false</code>。</p>
+<h3 id="計算字母在字串裡出現的次數"><a href="#計算字母在字串裡出現的次數" class="headerlink" title="計算字母在字串裡出現的次數"></a>計算字母在字串裡出現的次數</h3><ul>
+<li>算出有幾個 a</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">words = <span class="string">&quot;Convention Over Configuration and Don&#x27;t Repeat Yourself&quot;</span></span><br><span class="line">puts words.count(<span class="string">&quot;a&quot;</span>)</span><br><span class="line"><span class="comment"># 3</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>算出所有大寫字母</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">words = <span class="string">&quot;Convention Over Configuration and Don&#x27;t Repeat Yourself&quot;</span></span><br><span class="line">puts words.count(<span class="string">&quot;A-Z&quot;</span>)</span><br><span class="line"><span class="comment"># 6</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>算出所有小寫字母</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">words = <span class="string">&quot;Convention Over Configuration and Don&#x27;t Repeat Yourself&quot;</span></span><br><span class="line">puts words.count(<span class="string">&quot;a-z&quot;</span>)</span><br><span class="line"><span class="comment"># 42</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="檢查字串是不是特定字元開頭或結尾"><a href="#檢查字串是不是特定字元開頭或結尾" class="headerlink" title="檢查字串是不是特定字元開頭或結尾"></a>檢查字串是不是特定字元開頭或結尾</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">puts <span class="string">&quot;Justin Deng&quot;</span>.start_with?(<span class="string">&quot;J&quot;</span>)</span><br><span class="line"><span class="comment"># true</span></span><br><span class="line"></span><br><span class="line">puts <span class="string">&quot;Justin Deng&quot;</span>.start_with?(<span class="string">&quot;j&quot;</span>)</span><br><span class="line"><span class="comment"># false</span></span><br><span class="line"></span><br><span class="line">puts <span class="string">&quot;Justin Deng&quot;</span>.end_with?(<span class="string">&quot;g&quot;</span>)</span><br><span class="line"><span class="comment"># true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="檢查是否包含指定的字串或字元"><a href="#檢查是否包含指定的字串或字元" class="headerlink" title="檢查是否包含指定的字串或字元"></a>檢查是否包含指定的字串或字元</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">puts <span class="string">&quot;Justin Deng&quot;</span>.<span class="keyword">include</span>?(<span class="string">&quot;Justin&quot;</span>)</span><br><span class="line"><span class="comment"># true</span></span><br><span class="line"></span><br><span class="line">puts <span class="string">&quot;Justin Deng&quot;</span>.<span class="keyword">include</span>?(<span class="string">&quot;j&quot;</span>)</span><br><span class="line"><span class="comment"># false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="換掉符合條件的字串"><a href="#換掉符合條件的字串" class="headerlink" title="換掉符合條件的字串"></a>換掉符合條件的字串</h3><ul>
+<li>只會換掉第一個遇到並符合條件的字串 <code>sub</code></li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">puts <span class="string">&quot;PHP is good, but I love PHP&quot;</span>.sub(<span class="regexp">/PHP/</span>, <span class="string">&quot;Ruby&quot;</span>)</span><br><span class="line"><span class="comment"># Ruby is good, but I love PHP</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>會換掉所有符合條件的字串 <code>gsub</code></li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">puts <span class="string">&quot;PHP is good, and I love PHP&quot;</span>.gsub(<span class="regexp">/PHP/</span>, <span class="string">&quot;Ruby&quot;</span>)</span><br><span class="line"><span class="comment"># Ruby is good, and I love Ruby</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://railsbook.tw/chapters/06-ruby-basic-2">為你自己學 Ruby on Rails - 數字、字串、陣列、範圍、雜湊、符號</a></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://Ju5tinDeng.github.io">Ju5tin Deng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章連結: </span><span class="post-copyright-info"><a href="https://ju5tindeng.github.io/2023/12/23/string/">https://ju5tindeng.github.io/2023/12/23/string/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="https://Ju5tinDeng.github.io" target="_blank">學習筆記</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Ruby/">Ruby</a></div><div class="post_share"><div class="social-share" data-image="/image/Ju5tin.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/12/24/flow-controller/" title="Ruby - 流程控制與邏輯判斷"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Ruby - 流程控制與邏輯判斷</div></div></a></div><div class="next-post pull-right"><a href="/2023/12/22/number/" title="Ruby - 數字"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Ruby - 數字</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相關推薦</span></div><div class="relatedPosts-list"><div><a href="/2023/12/26/array/" title="Ruby - 陣列"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-26</div><div class="title">Ruby - 陣列</div></div></a></div><div><a href="/2023/12/24/flow-controller/" title="Ruby - 流程控制與邏輯判斷"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-24</div><div class="title">Ruby - 流程控制與邏輯判斷</div></div></a></div><div><a href="/2023/12/28/hash/" title="Ruby - 雜湊"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-28</div><div class="title">Ruby - 雜湊</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/image/Ju5tin.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Ju5tin Deng</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Ju5tinDeng" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E4%B8%B2-String"><span class="toc-number">1.</span> <span class="toc-text">字串 String</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E5%AD%97%E4%B8%B2"><span class="toc-number">1.1.</span> <span class="toc-text">建立字串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E4%B8%B2%E5%AE%89%E6%8F%92"><span class="toc-number">1.2.</span> <span class="toc-text">字串安插</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%B3%E8%84%AB%E5%AD%97%E5%85%83-escape"><span class="toc-number">1.3.</span> <span class="toc-text">跳脫字元 (escape) \</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E4%B8%B2%E6%93%8D%E4%BD%9C"><span class="toc-number">1.4.</span> <span class="toc-text">字串操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%96%E5%BE%97%E5%AD%97%E4%B8%B2%E6%9F%90%E5%80%8B%E5%AD%97%E5%85%83"><span class="toc-number">1.4.1.</span> <span class="toc-text">取得字串某個字元</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%AD%97%E4%B8%B2%E6%9F%90%E5%80%8B%E5%AD%97%E5%85%83"><span class="toc-number">1.4.2.</span> <span class="toc-text">修改字串某個字元</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A8%88%E7%AE%97%E5%AD%97%E4%B8%B2%E9%95%B7%E5%BA%A6%E6%88%96%E5%AD%97%E5%85%83%E7%B5%84"><span class="toc-number">1.5.</span> <span class="toc-text">計算字串長度或字元組</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A8%88%E7%AE%97%E4%B8%80%E6%AE%B5%E6%96%87%E5%AD%97%E4%B8%AD%E5%85%B1%E6%9C%89%E5%B9%BE%E5%80%8B%E5%AD%97"><span class="toc-number">1.6.</span> <span class="toc-text">計算一段文字中共有幾個字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8B%B1%E6%96%87%E5%AD%97%E4%B8%B2%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%AF%AB%E8%BD%89%E6%8F%9B"><span class="toc-number">1.7.</span> <span class="toc-text">英文字串的大小寫轉換</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A6%96%E5%AD%97%E5%A4%A7%E5%AF%AB-capitalize"><span class="toc-number">1.7.1.</span> <span class="toc-text">首字大寫 capitalize</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E9%83%A8%E8%BD%89%E6%8F%9B%E6%88%90%E5%A4%A7%E5%AF%AB-upcase"><span class="toc-number">1.7.2.</span> <span class="toc-text">全部轉換成大寫 upcase</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E9%83%A8%E8%BD%89%E6%8F%9B%E6%88%90%E5%B0%8F%E5%AF%AB-downcase"><span class="toc-number">1.7.3.</span> <span class="toc-text">全部轉換成小寫 downcase</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%A7%E5%B0%8F%E5%AF%AB%E4%BA%92%E7%9B%B8%E8%BD%89%E6%8F%9B-swapcase"><span class="toc-number">1.7.4.</span> <span class="toc-text">大小寫互相轉換 swapcase</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AA%A2%E6%9F%A5%E6%98%AF%E5%90%A6%E7%82%BA%E7%A9%BA%E5%AD%97%E4%B8%B2-empty"><span class="toc-number">1.8.</span> <span class="toc-text">檢查是否為空字串 empty?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A8%88%E7%AE%97%E5%AD%97%E6%AF%8D%E5%9C%A8%E5%AD%97%E4%B8%B2%E8%A3%A1%E5%87%BA%E7%8F%BE%E7%9A%84%E6%AC%A1%E6%95%B8"><span class="toc-number">1.9.</span> <span class="toc-text">計算字母在字串裡出現的次數</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AA%A2%E6%9F%A5%E5%AD%97%E4%B8%B2%E6%98%AF%E4%B8%8D%E6%98%AF%E7%89%B9%E5%AE%9A%E5%AD%97%E5%85%83%E9%96%8B%E9%A0%AD%E6%88%96%E7%B5%90%E5%B0%BE"><span class="toc-number">1.10.</span> <span class="toc-text">檢查字串是不是特定字元開頭或結尾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AA%A2%E6%9F%A5%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E6%8C%87%E5%AE%9A%E7%9A%84%E5%AD%97%E4%B8%B2%E6%88%96%E5%AD%97%E5%85%83"><span class="toc-number">1.11.</span> <span class="toc-text">檢查是否包含指定的字串或字元</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%9B%E6%8E%89%E7%AC%A6%E5%90%88%E6%A2%9D%E4%BB%B6%E7%9A%84%E5%AD%97%E4%B8%B2"><span class="toc-number">1.12.</span> <span class="toc-text">換掉符合條件的字串</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%83%E8%80%83"><span class="toc-number">2.</span> <span class="toc-text">參考</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/29/symbol/" title="Ruby - 符號">Ruby - 符號</a><time datetime="2023-12-28T16:00:00.000Z" title="發表於 2023-12-29 00:00:00">2023-12-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/28/hash/" title="Ruby - 雜湊">Ruby - 雜湊</a><time datetime="2023-12-27T16:00:00.000Z" title="發表於 2023-12-28 00:00:00">2023-12-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/27/range/" title="Ruby - 範圍">Ruby - 範圍</a><time datetime="2023-12-26T16:00:00.000Z" title="發表於 2023-12-27 00:00:00">2023-12-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/26/array/" title="Ruby - 陣列">Ruby - 陣列</a><time datetime="2023-12-25T16:00:00.000Z" title="發表於 2023-12-26 00:00:00">2023-12-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/25/loop-iteration/" title="Ruby - 迴圈及迭代">Ruby - 迴圈及迭代</a><time datetime="2023-12-24T16:00:00.000Z" title="發表於 2023-12-25 00:00:00">2023-12-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By Ju5tin Deng</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="返回頂部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div></div></body></html>

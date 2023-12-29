@@ -1,0 +1,347 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>學會 Git 就不會迷失自己！ | 學習筆記</title><meta name="author" content="Ju5tin Deng"><meta name="copyright" content="Ju5tin Deng"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Git 是什麼 ? Git 是一種分散式版本控制系統。像是動畫「哆啦Ａ夢」裡的時光機，隨時可以回到過去。透過這樣的系統，可以清楚的記錄每個檔案是誰在什麼時候加進來、什麼時候被修改或刪除。  MacOS 安裝 Git 首先安裝 Homebrew  1&#x2F;usr&#x2F;bin&#x2F;ruby -e &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="學會 Git 就不會迷失自己！">
+<meta property="og:url" content="https://ju5tindeng.github.io/2023/12/15/git/index.html">
+<meta property="og:site_name" content="學習筆記">
+<meta property="og:description" content="Git 是什麼 ? Git 是一種分散式版本控制系統。像是動畫「哆啦Ａ夢」裡的時光機，隨時可以回到過去。透過這樣的系統，可以清楚的記錄每個檔案是誰在什麼時候加進來、什麼時候被修改或刪除。  MacOS 安裝 Git 首先安裝 Homebrew  1&#x2F;usr&#x2F;bin&#x2F;ruby -e &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebr">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ju5tindeng.github.io/image/Ju5tin.jpg">
+<meta property="article:published_time" content="2023-12-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-12-29T17:19:00.921Z">
+<meta property="article:author" content="Ju5tin Deng">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ju5tindeng.github.io/image/Ju5tin.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ju5tindeng.github.io/2023/12/15/git/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '載入更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '學會 Git 就不會迷失自己！',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: undefined,
+  isToc: true,
+  postUpdate: '2023-12-30 01:19:00'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/image/Ju5tin.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="學習筆記"><span class="site-name">學習筆記</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">學會 Git 就不會迷失自己！</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">發表於</span><time datetime="2023-12-14T16:00:00.000Z" title="發表於 2023-12-15 00:00:00">2023-12-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Git/">Git</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Git-是什麼"><a href="#Git-是什麼" class="headerlink" title="Git 是什麼 ?"></a>Git 是什麼 ?</h2><blockquote>
+<p>Git 是一種分散式版本控制系統。<br>像是動畫「哆啦Ａ夢」裡的時光機，隨時可以回到過去。<br>透過這樣的系統，可以清楚的記錄每個檔案是誰在什麼時候加進來、什麼時候被修改或刪除。</p>
+</blockquote>
+<h2 id="MacOS-安裝-Git"><a href="#MacOS-安裝-Git" class="headerlink" title="MacOS 安裝 Git"></a>MacOS 安裝 Git</h2><ul>
+<li>首先安裝 Homebrew</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>透過 Homebrew 安裝 Git</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install git</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用指令列表"><a href="#常用指令列表" class="headerlink" title="常用指令列表"></a>常用指令列表</h2><h3 id="Git-設定"><a href="#Git-設定" class="headerlink" title="Git 設定"></a>Git 設定</h3><ul>
+<li>確認使用版本</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用者設定</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;Your Name&quot;</span><br><span class="line">git config --global user.email &quot;Your Email&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>設定完成後，可以輸入以下指令確認設定：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br><span class="line"><span class="comment"># user.name=Your Name</span></span><br><span class="line"><span class="comment"># user.email=Your Email</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Git-初始化"><a href="#Git-初始化" class="headerlink" title="Git 初始化"></a>Git 初始化</h3><ul>
+<li>初始化這個目錄，讓 Git 對這個目錄開始進行版控。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+<h3 id="把檔案交給-Git-控管"><a href="#把檔案交給-Git-控管" class="headerlink" title="把檔案交給 Git 控管"></a>把檔案交給 Git 控管</h3><ul>
+<li>查詢現在這個目錄的「狀態」</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>把檔案加至暫存區 (Staging Area)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add 檔案名稱</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用萬用字元，將所有附檔名是 <code>html</code> 的檔案全部都加到暫存區。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add *.html</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果想要一口氣把全部的檔案加到暫存區</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add --all</span><br><span class="line">git add -A</span><br><span class="line">git add .</span><br></pre></td></tr></table></figure>
+
+<p><code>.</code> 等於 here</p>
+<ul>
+<li>把暫存區的檔案存放到儲存庫 (Repository) 裡</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;Commit 說明&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/all-states.jpg" alt="all-states"></p>
+<blockquote>
+<p>圖片引用 <a target="_blank" rel="noopener" href="https://gitbook.tw/chapters/using-git/working-staging-and-repository">為你自己學 Git - 工作區、暫存區與儲存庫</a></p>
+</blockquote>
+<h3 id="檢視-Git-紀錄"><a href="#檢視-Git-紀錄" class="headerlink" title="檢視 Git 紀錄"></a>檢視 Git 紀錄</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
+
+<p>加上額外參數，可以看到不一樣的輸出格式或結果。</p>
+<table>
+<thead>
+<tr>
+<th>搭配參數</th>
+<th>呈現結果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--oneline</code></td>
+<td>將 commit 訊息以一行方式呈現</td>
+</tr>
+<tr>
+<td><code>--gragh</code></td>
+<td>將 commit 訊息圖像化呈現，會以「＊」顯示</td>
+</tr>
+<tr>
+<td><code>--author=&quot;姓名&quot;</code></td>
+<td>查詢某個人的 commit</td>
+</tr>
+<tr>
+<td><code>--grep=&quot;字樣&quot;</code></td>
+<td>搜尋 Commit 訊息裡面符合字樣的內容</td>
+</tr>
+<tr>
+<td><code>-S &quot;字樣&quot;</code></td>
+<td>搜尋在所有 Commit 的檔案中符合字樣的內容</td>
+</tr>
+</tbody></table>
+<h3 id="刪除檔案或變更檔名"><a href="#刪除檔案或變更檔名" class="headerlink" title="刪除檔案或變更檔名"></a>刪除檔案或變更檔名</h3><ul>
+<li>刪除檔案</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm 檔案名稱</span><br></pre></td></tr></table></figure>
+
+<p>或是請 Git 幫你砍</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm 檔案名稱</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>變更檔名</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv 原檔案 變更的檔名</span><br></pre></td></tr></table></figure>
+
+<p>或是請 Git 幫你改名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git mv 原檔案 變更的檔名</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改-Commit-紀錄"><a href="#修改-Commit-紀錄" class="headerlink" title="修改 Commit 紀錄"></a>修改 Commit 紀錄</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend -m &quot;修改的 Commit 訊息&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="幫你抓出兇手"><a href="#幫你抓出兇手" class="headerlink" title="幫你抓出兇手"></a>幫你抓出兇手</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git blame 檔案名稱</span><br></pre></td></tr></table></figure>
+
+<h3 id="救回誤刪檔案"><a href="#救回誤刪檔案" class="headerlink" title="救回誤刪檔案"></a>救回誤刪檔案</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout .</span><br><span class="line">git restore 檔案名稱</span><br></pre></td></tr></table></figure>
+
+<h3 id="重置-Commit"><a href="#重置-Commit" class="headerlink" title="重置 Commit"></a>重置 Commit</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset CommitID</span><br></pre></td></tr></table></figure>
+
+<p><code>HEAD^</code> 前一次<br><code>HEAD~數字</code> 倒退幾次</p>
+<p>加上額外參數，可以看到不一樣的輸出格式或結果。</p>
+<table>
+<thead>
+<tr>
+<th>搭配參數</th>
+<th>執行結果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--mixed</code></td>
+<td><code>預設</code> 將 Commit 拆出來的檔案會留在 <code>工作目錄</code></td>
+</tr>
+<tr>
+<td><code>--soft</code></td>
+<td>將 Commit 拆出來的檔案會直接放在 <code>暫存區</code></td>
+</tr>
+<tr>
+<td><code>--hard</code></td>
+<td>不管是工作目錄以及暫存區的檔案都會丟掉</td>
+</tr>
+</tbody></table>
+<h2 id="HEAD-是什麼東西？"><a href="#HEAD-是什麼東西？" class="headerlink" title="HEAD 是什麼東西？"></a>HEAD 是什麼東西？</h2><blockquote>
+<p>HEAD 是一個指標，指向某一個分支，通常可以把 HEAD 當做「目前所在的分支」。</p>
+</blockquote>
+<h3 id="查詢-HEAD-的移動記錄"><a href="#查詢-HEAD-的移動記錄" class="headerlink" title="查詢 HEAD 的移動記錄"></a>查詢 HEAD 的移動記錄</h3><ul>
+<li>當 HEAD 有移動的時候，Reflog 會保留 HEAD 所有的移動紀錄。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><blockquote>
+<p>其實可以把分支想像成貼紙一樣</p>
+</blockquote>
+<h3 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+
+<h3 id="新增分支"><a href="#新增分支" class="headerlink" title="新增分支"></a>新增分支</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch 分支名稱</span><br></pre></td></tr></table></figure>
+
+<h3 id="重新命名分支"><a href="#重新命名分支" class="headerlink" title="重新命名分支"></a>重新命名分支</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -m 原分支 更改的名稱</span><br></pre></td></tr></table></figure>
+
+<h3 id="刪除分支"><a href="#刪除分支" class="headerlink" title="刪除分支"></a>刪除分支</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d 分支名稱</span><br></pre></td></tr></table></figure>
+
+<h3 id="強制刪除分支"><a href="#強制刪除分支" class="headerlink" title="強制刪除分支"></a>強制刪除分支</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -D 分支名稱</span><br></pre></td></tr></table></figure>
+
+<h3 id="切換分支"><a href="#切換分支" class="headerlink" title="切換分支"></a>切換分支</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout 分支名稱</span><br><span class="line">git switch 分支名稱</span><br></pre></td></tr></table></figure>
+
+<h3 id="切換至任意-Commit-上"><a href="#切換至任意-Commit-上" class="headerlink" title="切換至任意 Commit 上"></a>切換至任意 Commit 上</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git switch CommitID --detach</span><br></pre></td></tr></table></figure>
+
+<h3 id="合併分支"><a href="#合併分支" class="headerlink" title="合併分支"></a>合併分支</h3><h4 id="merge"><a href="#merge" class="headerlink" title="merge"></a><code>merge</code></h4><ul>
+<li>將當下所在分支與指定分支合併 (兩個由 <code>master</code> 切出去的分支)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge 指定分支的名稱 -m &quot;Commit 說明&quot;</span><br></pre></td></tr></table></figure>
+
+<p>注意：當下分支在前，指定分支在後。</p>
+<ul>
+<li>當要合併由當下所在分支 <code>master</code> 切出去的分支並「不要使用快轉模式合併」</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge 指定分支的名稱 --no-ff</span><br></pre></td></tr></table></figure>
+
+<p>就會長出「小耳朵」</p>
+<h4 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a><code>rebase</code></h4><ul>
+<li>將當下所在分支與指定分支合併 (兩個由 <code>master</code> 切出去的分支)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase 指定分支的名稱</span><br></pre></td></tr></table></figure>
+
+<p>注意：指定分支在前，當下分支在後。</p>
+<p><img src="/image/rebase-branch.jpg" alt="rebase-branch"></p>
+<blockquote>
+<p>圖片引用 <a target="_blank" rel="noopener" href="https://gitbook.tw/chapters/branch/merge-with-rebase">為你自己學 Git - 另一種合併方式（使用 rebase）</a></p>
+</blockquote>
+<p>感覺像是「把 <code>當下分支</code> 剪下來，然後貼在 <code>指定分支</code> 上面」，<br>但其實只是因為 <code>原當下分支</code> 已經沒有分支指著它，<br>看似已經消失不見，事實上它還存在著。</p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/Git">維基百科</a> &gt; <a target="_blank" rel="noopener" href="https://gitbook.tw/">為你自己學 Git</a></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://Ju5tinDeng.github.io">Ju5tin Deng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章連結: </span><span class="post-copyright-info"><a href="https://ju5tindeng.github.io/2023/12/15/git/">https://ju5tindeng.github.io/2023/12/15/git/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="https://Ju5tinDeng.github.io" target="_blank">學習筆記</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Git/">Git</a></div><div class="post_share"><div class="social-share" data-image="/image/Ju5tin.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2023/12/16/terminal/" title="常用的終端機指令"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">常用的終端機指令</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/image/Ju5tin.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Ju5tin Deng</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Ju5tinDeng" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="toc-number">1.</span> <span class="toc-text">Git 是什麼 ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MacOS-%E5%AE%89%E8%A3%9D-Git"><span class="toc-number">2.</span> <span class="toc-text">MacOS 安裝 Git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%E5%88%97%E8%A1%A8"><span class="toc-number">3.</span> <span class="toc-text">常用指令列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Git-%E8%A8%AD%E5%AE%9A"><span class="toc-number">3.1.</span> <span class="toc-text">Git 設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git-%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">3.2.</span> <span class="toc-text">Git 初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%8A%E6%AA%94%E6%A1%88%E4%BA%A4%E7%B5%A6-Git-%E6%8E%A7%E7%AE%A1"><span class="toc-number">3.3.</span> <span class="toc-text">把檔案交給 Git 控管</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AA%A2%E8%A6%96-Git-%E7%B4%80%E9%8C%84"><span class="toc-number">3.4.</span> <span class="toc-text">檢視 Git 紀錄</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%AA%E9%99%A4%E6%AA%94%E6%A1%88%E6%88%96%E8%AE%8A%E6%9B%B4%E6%AA%94%E5%90%8D"><span class="toc-number">3.5.</span> <span class="toc-text">刪除檔案或變更檔名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-Commit-%E7%B4%80%E9%8C%84"><span class="toc-number">3.6.</span> <span class="toc-text">修改 Commit 紀錄</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%AB%E4%BD%A0%E6%8A%93%E5%87%BA%E5%85%87%E6%89%8B"><span class="toc-number">3.7.</span> <span class="toc-text">幫你抓出兇手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%91%E5%9B%9E%E8%AA%A4%E5%88%AA%E6%AA%94%E6%A1%88"><span class="toc-number">3.8.</span> <span class="toc-text">救回誤刪檔案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E7%BD%AE-Commit"><span class="toc-number">3.9.</span> <span class="toc-text">重置 Commit</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HEAD-%E6%98%AF%E4%BB%80%E9%BA%BC%E6%9D%B1%E8%A5%BF%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">HEAD 是什麼東西？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%A9%A2-HEAD-%E7%9A%84%E7%A7%BB%E5%8B%95%E8%A8%98%E9%8C%84"><span class="toc-number">4.1.</span> <span class="toc-text">查詢 HEAD 的移動記錄</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%94%AF"><span class="toc-number">5.</span> <span class="toc-text">分支</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%88%86%E6%94%AF"><span class="toc-number">5.1.</span> <span class="toc-text">查看分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E5%88%86%E6%94%AF"><span class="toc-number">5.2.</span> <span class="toc-text">新增分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E6%96%B0%E5%91%BD%E5%90%8D%E5%88%86%E6%94%AF"><span class="toc-number">5.3.</span> <span class="toc-text">重新命名分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%AA%E9%99%A4%E5%88%86%E6%94%AF"><span class="toc-number">5.4.</span> <span class="toc-text">刪除分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%B7%E5%88%B6%E5%88%AA%E9%99%A4%E5%88%86%E6%94%AF"><span class="toc-number">5.5.</span> <span class="toc-text">強制刪除分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8F%9B%E5%88%86%E6%94%AF"><span class="toc-number">5.6.</span> <span class="toc-text">切換分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8F%9B%E8%87%B3%E4%BB%BB%E6%84%8F-Commit-%E4%B8%8A"><span class="toc-number">5.7.</span> <span class="toc-text">切換至任意 Commit 上</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E4%BD%B5%E5%88%86%E6%94%AF"><span class="toc-number">5.8.</span> <span class="toc-text">合併分支</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#merge"><span class="toc-number">5.8.1.</span> <span class="toc-text">merge</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rebase"><span class="toc-number">5.8.2.</span> <span class="toc-text">rebase</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%83%E8%80%83"><span class="toc-number">6.</span> <span class="toc-text">參考</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/29/symbol/" title="Ruby - 符號">Ruby - 符號</a><time datetime="2023-12-28T16:00:00.000Z" title="發表於 2023-12-29 00:00:00">2023-12-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/28/hash/" title="Ruby - 雜湊">Ruby - 雜湊</a><time datetime="2023-12-27T16:00:00.000Z" title="發表於 2023-12-28 00:00:00">2023-12-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/27/range/" title="Ruby - 範圍">Ruby - 範圍</a><time datetime="2023-12-26T16:00:00.000Z" title="發表於 2023-12-27 00:00:00">2023-12-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/26/array/" title="Ruby - 陣列">Ruby - 陣列</a><time datetime="2023-12-25T16:00:00.000Z" title="發表於 2023-12-26 00:00:00">2023-12-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/25/loop-iteration/" title="Ruby - 迴圈及迭代">Ruby - 迴圈及迭代</a><time datetime="2023-12-24T16:00:00.000Z" title="發表於 2023-12-25 00:00:00">2023-12-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By Ju5tin Deng</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="返回頂部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div></div></body></html>
