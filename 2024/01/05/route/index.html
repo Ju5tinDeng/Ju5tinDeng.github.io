@@ -1,0 +1,377 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Rails - Route | 學習筆記</title><meta name="author" content="Ju5tin Deng"><meta name="copyright" content="Ju5tin Deng"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Route 負責解讀使用者輸入的網址，找到對應的網頁或處理動作。  列出專案所有路徑在 終端機 執行： 1234rails routesPrefix Verb URI Pattern      Controller#Action...  設定首頁1get &quot;&#x2F;&quot;, to: &quot;blogs#index&quot;  或是 1root &quot;blogs#index&amp;q">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rails - Route">
+<meta property="og:url" content="https://ju5tindeng.github.io/2024/01/05/route/index.html">
+<meta property="og:site_name" content="學習筆記">
+<meta property="og:description" content="Route 負責解讀使用者輸入的網址，找到對應的網頁或處理動作。  列出專案所有路徑在 終端機 執行： 1234rails routesPrefix Verb URI Pattern      Controller#Action...  設定首頁1get &quot;&#x2F;&quot;, to: &quot;blogs#index&quot;  或是 1root &quot;blogs#index&amp;q">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ju5tindeng.github.io/image/Ju5tin.jpg">
+<meta property="article:published_time" content="2024-01-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-01-18T17:08:09.609Z">
+<meta property="article:author" content="Ju5tin Deng">
+<meta property="article:tag" content="Ruby on Rails">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ju5tindeng.github.io/image/Ju5tin.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ju5tindeng.github.io/2024/01/05/route/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '載入更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Rails - Route',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: undefined,
+  isToc: true,
+  postUpdate: '2024-01-19 01:08:09'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/image/Ju5tin.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">6</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/image/index_img.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="學習筆記"><span class="site-name">學習筆記</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Rails - Route</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">發表於</span><time datetime="2024-01-04T16:00:00.000Z" title="發表於 2024-01-05 00:00:00">2024-01-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Ruby-on-Rails/">Ruby on Rails</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Route"><a href="#Route" class="headerlink" title="Route"></a>Route</h2><blockquote>
+<p>負責解讀使用者輸入的網址，找到對應的網頁或處理動作。</p>
+</blockquote>
+<h3 id="列出專案所有路徑"><a href="#列出專案所有路徑" class="headerlink" title="列出專案所有路徑"></a>列出專案所有路徑</h3><p>在 <strong>終端機</strong> 執行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rails routes</span><br><span class="line"></span><br><span class="line">Prefix Verb URI Pattern      Controller<span class="comment">#Action</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h3 id="設定首頁"><a href="#設定首頁" class="headerlink" title="設定首頁"></a>設定首頁</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get <span class="string">&quot;/&quot;</span>, <span class="symbol">to:</span> <span class="string">&quot;blogs#index&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>或是</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root <span class="string">&quot;blogs#index&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="設定路徑"><a href="#設定路徑" class="headerlink" title="設定路徑"></a>設定路徑</h3><h4 id="手工打造路徑"><a href="#手工打造路徑" class="headerlink" title="手工打造路徑"></a>手工打造路徑</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Rails</span>.application.routes.draw <span class="keyword">do</span></span><br><span class="line">  get <span class="string">&quot;/articles&quot;</span>, <span class="symbol">to:</span> <span class="string">&quot;articles#index&quot;</span></span><br><span class="line">  get <span class="string">&quot;/articles/:id&quot;</span>, <span class="symbol">to:</span> <span class="string">&quot;articles#show&quot;</span></span><br><span class="line">  get <span class="string">&quot;/articles/new&quot;</span>, <span class="symbol">to:</span> <span class="string">&quot;articles#new&quot;</span></span><br><span class="line">  post <span class="string">&quot;/articles&quot;</span>, <span class="symbol">to:</span> <span class="string">&quot;articles#create&quot;</span></span><br><span class="line">  get <span class="string">&quot;/articles/:id/edit&quot;</span>, <span class="symbol">to:</span> <span class="string">&quot;articles#edit&quot;</span></span><br><span class="line">  put <span class="string">&quot;/articles/:id&quot;</span>, <span class="symbol">to:</span> <span class="string">&quot;articles#update&quot;</span></span><br><span class="line">  patch <span class="string">&quot;/articles/:id&quot;</span>, <span class="symbol">to:</span> <span class="string">&quot;articles#update&quot;</span></span><br><span class="line">  delete <span class="string">&quot;/articles/:id&quot;</span>, <span class="symbol">to:</span> <span class="string">&quot;articles#destroy&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>或是</p>
+<h4 id="快速產生路徑"><a href="#快速產生路徑" class="headerlink" title="快速產生路徑"></a>快速產生路徑</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Rails</span>.application.routes.draw <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:articles</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>動詞</th>
+<th>Prefix</th>
+<th>路徑</th>
+<th>Controller</th>
+<th>Action</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>articles</td>
+<td>&#x2F;articles</td>
+<td>ArticlesController</td>
+<td>index</td>
+<td>文章列表</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>article</td>
+<td>&#x2F;articles&#x2F;:id</td>
+<td>ArticlesController</td>
+<td>show</td>
+<td>檢視單一文章</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>new_article</td>
+<td>&#x2F;articles&#x2F;new</td>
+<td>ArticlesController</td>
+<td>new</td>
+<td>新增文章頁面</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>articles</td>
+<td>&#x2F;articles</td>
+<td>ArticlesController</td>
+<td>create</td>
+<td>新增文章</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>edit_article</td>
+<td>&#x2F;articles&#x2F;:id&#x2F;edit</td>
+<td>ArticlesController</td>
+<td>edit</td>
+<td>編輯文章頁面</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>article</td>
+<td>&#x2F;articles&#x2F;:id</td>
+<td>ArticlesController</td>
+<td>update</td>
+<td>完整更新文章</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>article</td>
+<td>&#x2F;articles&#x2F;:id</td>
+<td>ArticlesController</td>
+<td>update</td>
+<td>部分更新文章</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>article</td>
+<td>&#x2F;articles&#x2F;:id</td>
+<td>ArticlesController</td>
+<td>destroy</td>
+<td>刪除文章</td>
+</tr>
+</tbody></table>
+<h3 id="關於-Resources-設定"><a href="#關於-Resources-設定" class="headerlink" title="關於 Resources 設定"></a>關於 Resources 設定</h3><h4 id="Resources-單數"><a href="#Resources-單數" class="headerlink" title="Resources :單數"></a>Resources :單數</h4><blockquote>
+<p>遵照 <code>慣例</code> 通常後面會接 <strong>複數</strong>。<br>如果後面接 <strong>單數</strong>，一樣會產生 8 個路徑對應 CRUD 的 7 個 Action 的方法，但對應到的 Controller 會是 <strong>單數</strong>。</p>
+</blockquote>
+<h4 id="單數-Resource"><a href="#單數-Resource" class="headerlink" title="單數 Resource"></a>單數 Resource</h4><blockquote>
+<p>單數 resource 方法產生的路徑不會有 <code>:id</code>。<br>只會產生 7 個路徑，檢查會發現少了 <code>index</code> 這個 Action 方法的路徑。<br>例如：會員系統 <strong>「會員不需要知道自己在網站的會員序號」</strong>。</p>
+</blockquote>
+<h3 id="調整路徑的數量-Only-與-Except"><a href="#調整路徑的數量-Only-與-Except" class="headerlink" title="調整路徑的數量 Only 與 Except"></a>調整路徑的數量 <code>Only</code> 與 <code>Except</code></h3><ul>
+<li><code>only</code></li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Rails</span>.application.routes.draw <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:articles</span>, <span class="symbol">only:</span> [<span class="symbol">:index</span>, <span class="symbol">:show</span>]</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>except</code></li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Rails</span>.application.routes.draw <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:articles</span>, <span class="symbol">except:</span> [<span class="symbol">:new</span>, <span class="symbol">:create</span>, <span class="symbol">:edit</span>, <span class="symbol">:update</span>, <span class="symbol">:destroy</span>]</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>路徑除了只能看 文章總覽 和 各篇文章 ，無法對文章進行 新增、修改、更新和刪除 的其他操作。<br><code>only</code> 與 <code>except</code> 兩種寫法相反。</p>
+</blockquote>
+<h3 id="巢狀設計網址"><a href="#巢狀設計網址" class="headerlink" title="巢狀設計網址"></a>巢狀設計網址</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Rails</span>.application.routes.draw <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:users</span> <span class="keyword">do</span></span><br><span class="line">    resources <span class="symbol">:articles</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>一個使用者擁有多篇文章。<br>建議 Resources 最多二層就好，避免網址路徑冗長。</p>
+</blockquote>
+<h3 id="簡化贅長的網址路徑-Shallow"><a href="#簡化贅長的網址路徑-Shallow" class="headerlink" title="簡化贅長的網址路徑 Shallow"></a>簡化贅長的網址路徑 <code>Shallow</code></h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Rails</span>.application.routes.draw <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:users</span> <span class="keyword">do</span></span><br><span class="line">    resources <span class="symbol">:articles</span>, <span class="symbol">only:</span> [<span class="symbol">:index</span>, <span class="symbol">:new</span>, <span class="symbol">:create</span>]</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  resources <span class="symbol">:articles</span>, <span class="symbol">only:</span> [<span class="symbol">:show</span>, <span class="symbol">:edit</span>, <span class="symbol">:update</span>, <span class="symbol">:destroy</span>]</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>或是</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Rails</span>.application.routes.draw <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:users</span> <span class="keyword">do</span></span><br><span class="line">    resources <span class="symbol">:articles</span>, <span class="symbol">shallow:</span> <span class="literal">true</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在檢視、編輯、更新和刪除文章 操作網址上省略掉 <strong>使用者和其序號</strong>，讓網址較短、簡單並更清楚。</p>
+</blockquote>
+<h3 id="設定額外獨立的路徑-Collection-與-Member"><a href="#設定額外獨立的路徑-Collection-與-Member" class="headerlink" title="設定額外獨立的路徑 Collection 與 Member"></a>設定額外獨立的路徑 <code>Collection</code> 與 <code>Member</code></h3><ul>
+<li><code>collection</code></li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Rails</span>.application.routes.draw <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:orders</span> <span class="keyword">do</span></span><br><span class="line">    collection <span class="keyword">do</span></span><br><span class="line">      get <span class="symbol">:cancelled</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>或是</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Rails</span>.application.routes.draw <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:orders</span> <span class="keyword">do</span></span><br><span class="line">    get <span class="symbol">:cancelled</span>, <span class="symbol">on:</span> <span class="symbol">:collection</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>獨立設定檢視「已取消訂單」的路徑。<br><code>collection</code> 在路徑上不會產生 <code>:id</code>。</p>
+</blockquote>
+<ul>
+<li><code>member</code></li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Rails</span>.application.routes.draw <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:orders</span> <span class="keyword">do</span></span><br><span class="line">    member <span class="keyword">do</span></span><br><span class="line">      post <span class="symbol">:confirm</span></span><br><span class="line">      delete <span class="symbol">:cancel</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>或是</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Rails</span>.application.routes.draw <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:orders</span> <span class="keyword">do</span></span><br><span class="line">    post <span class="symbol">:confirm</span>, <span class="symbol">on:</span> <span class="symbol">:member</span></span><br><span class="line">    delete <span class="symbol">:cancel</span>, <span class="symbol">on:</span> <span class="symbol">:member</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>獨立設定 「確認某訂單」 或是 「取消某訂單」的路徑。<br><code>member</code> 在路徑上需帶入 <code>:id</code> 引數。</p>
+</blockquote>
+<h3 id="變更路徑"><a href="#變更路徑" class="headerlink" title="變更路徑"></a>變更路徑</h3><h4 id="as"><a href="#as" class="headerlink" title="as"></a>as</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Rails</span>.application.routes.draw <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:articles</span>, <span class="symbol">as:</span> <span class="string">&quot;posts&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>路徑只更改 <code>Helper</code>。</p>
+<h4 id="Path"><a href="#Path" class="headerlink" title="Path"></a>Path</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Rails</span>.application.routes.draw <span class="keyword">do</span></span><br><span class="line">  resources <span class="symbol">:articles</span>, <span class="symbol">path:</span> <span class="string">&quot;admin&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>路徑只更改 <code>Path</code>。</p>
+<h4 id="Namespace"><a href="#Namespace" class="headerlink" title="Namespace"></a>Namespace</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Rails</span>.application.routes.draw <span class="keyword">do</span></span><br><span class="line">  namespace <span class="symbol">:admin</span> <span class="keyword">do</span></span><br><span class="line">    resources <span class="symbol">:articles</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>路徑同時更改 <code>Helper</code>、<code>Path</code>、<code>Controller#Action</code>。</p>
+<h3 id="路徑重複"><a href="#路徑重複" class="headerlink" title="路徑重複"></a>路徑重複</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Rails</span>.application.routes.draw <span class="keyword">do</span></span><br><span class="line">  get <span class="string">&quot;/about&quot;</span>, <span class="symbol">to:</span> <span class="string">&quot;posts#about&quot;</span></span><br><span class="line">  get <span class="string">&quot;/about&quot;</span>, <span class="symbol">to:</span> <span class="string">&quot;articles#about&quot;</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>當路徑重複時，前面的路徑會先生效，後面的路徑則是被覆蓋。</p>
+<h3 id="View-Helper-中-Path-和-Url-的差異"><a href="#View-Helper-中-Path-和-Url-的差異" class="headerlink" title="View Helper 中 Path 和 Url 的差異"></a>View Helper 中 Path 和 Url 的差異</h3><p><strong>path</strong>：產生站內的路徑。</p>
+<table>
+<thead>
+<tr>
+<th>path</th>
+<th>Prefix_path</th>
+<th>路徑</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>articles + path</td>
+<td>articles_path</td>
+<td>&#x2F;articles</td>
+</tr>
+<tr>
+<td>new_article + path</td>
+<td>new_article_path</td>
+<td>&#x2F;articles&#x2F;new</td>
+</tr>
+<tr>
+<td>edit_article + path</td>
+<td>edit_article_path(5)</td>
+<td>&#x2F;articles&#x2F;5&#x2F;edit</td>
+</tr>
+</tbody></table>
+<p><strong>url</strong>：產生含有主機網域名稱的完整網址。</p>
+<table>
+<thead>
+<tr>
+<th>url</th>
+<th>Prefix_url</th>
+<th>網址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>articles + url</td>
+<td>articles_url</td>
+<td><a href="https://ju5tindeng.github.io/articles">https://ju5tindeng.github.io/articles</a></td>
+</tr>
+<tr>
+<td>new_article + url</td>
+<td>new_article_url</td>
+<td><a href="https://ju5tindeng.github.io/articles/new">https://ju5tindeng.github.io/articles/new</a></td>
+</tr>
+<tr>
+<td>edit_article + url</td>
+<td>edit_article_url(5)</td>
+<td><a href="https://ju5tindeng.github.io/articles/5/edit">https://ju5tindeng.github.io/articles/5/edit</a></td>
+</tr>
+</tbody></table>
+<h3 id="轉址"><a href="#轉址" class="headerlink" title="轉址"></a>轉址</h3><ul>
+<li>內部轉址</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get <span class="string">&#x27;/users&#x27;</span>, <span class="symbol">to:</span> redirect(<span class="string">&#x27;/accounts&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>外部轉址</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get <span class="string">&#x27;/Ju5tindeng&#x27;</span>, <span class="symbol">to:</span> redirect(<span class="string">&#x27;https://ju5tindeng.github.io/&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://railsbook.tw/chapters/11-routes">為你自己學 Ruby on Rails - Routes</a></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://Ju5tinDeng.github.io">Ju5tin Deng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章連結: </span><span class="post-copyright-info"><a href="https://ju5tindeng.github.io/2024/01/05/route/">https://ju5tindeng.github.io/2024/01/05/route/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="https://Ju5tinDeng.github.io" target="_blank">學習筆記</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Ruby-on-Rails/">Ruby on Rails</a></div><div class="post_share"><div class="social-share" data-image="/image/Ju5tin.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/01/04/mvc/" title="Rails - MVC 架構"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Rails - MVC 架構</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相關推薦</span></div><div class="relatedPosts-list"><div><a href="/2024/01/04/mvc/" title="Rails - MVC 架構"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-04</div><div class="title">Rails - MVC 架構</div></div></a></div><div><a href="/2024/01/03/rails-folders/" title="Rails - Rails 專案 檔案及資料夾的用途"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-03</div><div class="title">Rails - Rails 專案 檔案及資料夾的用途</div></div></a></div><div><a href="/2023/12/19/ruby-and-ruby-on-rails/" title="Ruby 和 Ruby on Rails"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-19</div><div class="title">Ruby 和 Ruby on Rails</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/image/Ju5tin.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Ju5tin Deng</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">6</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Ju5tinDeng" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:justinx0505@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">菜鳥工程師 持續成長 持續更新</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Route"><span class="toc-number">1.</span> <span class="toc-text">Route</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E5%87%BA%E5%B0%88%E6%A1%88%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%91"><span class="toc-number">1.1.</span> <span class="toc-text">列出專案所有路徑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9A%E9%A6%96%E9%A0%81"><span class="toc-number">1.2.</span> <span class="toc-text">設定首頁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9A%E8%B7%AF%E5%BE%91"><span class="toc-number">1.3.</span> <span class="toc-text">設定路徑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%8B%E5%B7%A5%E6%89%93%E9%80%A0%E8%B7%AF%E5%BE%91"><span class="toc-number">1.3.1.</span> <span class="toc-text">手工打造路徑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E7%94%A2%E7%94%9F%E8%B7%AF%E5%BE%91"><span class="toc-number">1.3.2.</span> <span class="toc-text">快速產生路徑</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%9C%E6%96%BC-Resources-%E8%A8%AD%E5%AE%9A"><span class="toc-number">1.4.</span> <span class="toc-text">關於 Resources 設定</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Resources-%E5%96%AE%E6%95%B8"><span class="toc-number">1.4.1.</span> <span class="toc-text">Resources :單數</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%96%AE%E6%95%B8-Resource"><span class="toc-number">1.4.2.</span> <span class="toc-text">單數 Resource</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AA%BF%E6%95%B4%E8%B7%AF%E5%BE%91%E7%9A%84%E6%95%B8%E9%87%8F-Only-%E8%88%87-Except"><span class="toc-number">1.5.</span> <span class="toc-text">調整路徑的數量 Only 與 Except</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A2%E7%8B%80%E8%A8%AD%E8%A8%88%E7%B6%B2%E5%9D%80"><span class="toc-number">1.6.</span> <span class="toc-text">巢狀設計網址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B0%A1%E5%8C%96%E8%B4%85%E9%95%B7%E7%9A%84%E7%B6%B2%E5%9D%80%E8%B7%AF%E5%BE%91-Shallow"><span class="toc-number">1.7.</span> <span class="toc-text">簡化贅長的網址路徑 Shallow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A8%AD%E5%AE%9A%E9%A1%8D%E5%A4%96%E7%8D%A8%E7%AB%8B%E7%9A%84%E8%B7%AF%E5%BE%91-Collection-%E8%88%87-Member"><span class="toc-number">1.8.</span> <span class="toc-text">設定額外獨立的路徑 Collection 與 Member</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%8A%E6%9B%B4%E8%B7%AF%E5%BE%91"><span class="toc-number">1.9.</span> <span class="toc-text">變更路徑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#as"><span class="toc-number">1.9.1.</span> <span class="toc-text">as</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Path"><span class="toc-number">1.9.2.</span> <span class="toc-text">Path</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Namespace"><span class="toc-number">1.9.3.</span> <span class="toc-text">Namespace</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E5%BE%91%E9%87%8D%E8%A4%87"><span class="toc-number">1.10.</span> <span class="toc-text">路徑重複</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#View-Helper-%E4%B8%AD-Path-%E5%92%8C-Url-%E7%9A%84%E5%B7%AE%E7%95%B0"><span class="toc-number">1.11.</span> <span class="toc-text">View Helper 中 Path 和 Url 的差異</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%89%E5%9D%80"><span class="toc-number">1.12.</span> <span class="toc-text">轉址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%83%E8%80%83"><span class="toc-number">2.</span> <span class="toc-text">參考</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/05/route/" title="Rails - Route">Rails - Route</a><time datetime="2024-01-04T16:00:00.000Z" title="發表於 2024-01-05 00:00:00">2024-01-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/04/mvc/" title="Rails - MVC 架構">Rails - MVC 架構</a><time datetime="2024-01-03T16:00:00.000Z" title="發表於 2024-01-04 00:00:00">2024-01-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/03/rails-folders/" title="Rails - Rails 專案 檔案及資料夾的用途">Rails - Rails 專案 檔案及資料夾的用途</a><time datetime="2024-01-02T16:00:00.000Z" title="發表於 2024-01-03 00:00:00">2024-01-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/02/module/" title="Ruby - 模組">Ruby - 模組</a><time datetime="2024-01-01T16:00:00.000Z" title="發表於 2024-01-02 00:00:00">2024-01-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/01/class/" title="Ruby - 類別">Ruby - 類別</a><time datetime="2023-12-31T16:00:00.000Z" title="發表於 2024-01-01 00:00:00">2024-01-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By Ju5tin Deng</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="返回頂部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div></div></body></html>
